@@ -1,0 +1,14 @@
+<form class="vertical-form" (submit)="login()" [formGroup]="loginForm">
+    <mat-form-field>
+        <mat-label>Nom d'utilisateur</mat-label>
+        <input type="text" matInput formControlName="username" >
+        <mat-error *ngIf="loginForm.get('username')?.hasError('required')">Le nom d'utilisateur est requis.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Mot de passe</mat-label>
+        <input type="password" matInput formControlName="password">
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Le mot de passe est requis.</mat-error>
+    </mat-form-field>
+    <button type="submit" color="primary" mat-raised-button style="margin-right: 10px;">Connexion</button>
+    <a routerLink="/register" color="secondary" mat-raised-button>Vous n'avez pas de compte?</a>
+</form>

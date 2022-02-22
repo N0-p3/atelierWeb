@@ -1,0 +1,23 @@
+<header>
+  <mat-toolbar class="d-flex space-between">
+    <button mat-raised-button color="primary" routerLink="/">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+      <a class="d-inline">Home</a>
+    </button>
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+      <mat-menu #menu="matMenu">
+        <button *ngIf="authService.isDisconnected()" mat-menu-item routerLink="/login">Login</button>
+        <button *ngIf="authService.isConnected()" mat-menu-item (click)="logout()">Logout</button>
+        <button *ngIf="authService.isDisconnected()" mat-menu-item routerLink="/register">Register</button>
+        <button *ngIf="authService.isConnected()" mat-menu-item routerLink="/myArticles">My Articles</button>
+      </mat-menu>
+  </mat-toolbar>
+</header>
+
+<main class="content">
+	<div class="content-inner">
+		<router-outlet></router-outlet>
+	</div>
+</main>
+
+<footer></footer>

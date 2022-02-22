@@ -1,0 +1,24 @@
+<form class="vertical-form" (submit)="createOneArticle()" [formGroup]="createForm">
+    <mat-form-field>
+        <mat-label>Titre</mat-label>
+        <input type="text" matInput formControlName="title">
+        <mat-error *ngIf="createForm.get('title')?.hasError('required')">Le titre de l'article est requis.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Corps</mat-label>
+        <input type="text" matInput formControlName="body">
+        <mat-error *ngIf="createForm.get('body')?.hasError('required')">Le corps de l'article est requis.</mat-error>
+    </mat-form-field>
+    <button type="submit" color="primary" mat-raised-button>Créer</button>
+</form>
+
+<h1 class="title">Voici vos articles</h1>
+<section class="grid-container">
+    <div class="col">
+        <ng-container *ngFor="let article of articles; index as i;">
+            <app-article [article]="article"></app-article>
+            <button mat-raised-button color="accent" style="margin-right: 10px;">Mettre à jour</button>
+            <button (click)="deleteArticle(article.id)" mat-raised-button color="warn">Supprimer</button>
+        </ng-container>
+    </div>
+</section>

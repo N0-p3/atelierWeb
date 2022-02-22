@@ -1,0 +1,19 @@
+<form class="vertical-form" (submit)="register()" [formGroup]="registerForm">
+    <mat-form-field>
+        <mat-label>Nom d'utilisateur</mat-label>
+        <input type="text" matInput formControlName="username" >
+        <mat-error *ngIf="registerForm.get('username')?.hasError('required')">Le nom d'utilisateur est requis.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Mot de passe</mat-label>
+        <input type="password" matInput formControlName="password">
+        <mat-error *ngIf="registerForm.get('password')?.hasError('required')">Le mot de passe est requis.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Répétition du mot de passe</mat-label>
+        <input type="password" matInput formControlName="passwordRepeat">
+        <mat-error *ngIf="registerForm.get('passwordRepeat')?.hasError('required')">Le mot de passe est requis.</mat-error>
+    </mat-form-field>
+    <button type="submit" color="primary" mat-raised-button style="margin-right: 10px;">S'enregistrer</button>
+    <a routerLink="/login" color="secondary" mat-raised-button>Vous avez déjà un compte?</a>
+</form>
